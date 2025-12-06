@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Groq AI-Powered Web-Based Secure Coding Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Groq AI-Powered Web-Based Secure Coding Assistant</h1>
+            <p>Manage your security analysis projects</p>
+        </div>
+
+        <!-- Search and Filter Bar -->
+        <div class="dashboard-controls">
+            <div class="search-container">
+                <input type="text" id="search-input" class="search-input" placeholder="🔍 Search projects... (Ctrl+K)" autocomplete="off">
+                <button id="clear-search-btn" class="clear-search-btn" style="display: none;" title="Clear search">✕</button>
+            </div>
+            <div class="controls-right">
+                <select id="sort-select" class="sort-select" title="Sort projects">
+                    <option value="updated">Recently Updated</option>
+                    <option value="created">Recently Created</option>
+                    <option value="name">Name (A-Z)</option>
+                    <option value="name-desc">Name (Z-A)</option>
+                    <option value="favorites">Favorites First</option>
+                </select>
+                <button class="create-project-btn" id="create-project-btn">
+                    ➕ Create New Project
+                </button>
+            </div>
+        </div>
+
+        <div id="projects-container">
+            <div class="loading-projects">
+                <div class="spinner"></div>
+                <p>Loading projects...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Project Modal -->
+    <div id="create-project-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Project</h2>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="project-name">Project Name</label>
+                    <input type="text" id="project-name" placeholder="Enter project name" maxlength="100">
+                </div>
+                <div class="form-group">
+                    <label for="project-description">Description (Optional)</label>
+                    <input type="text" id="project-description" placeholder="Enter project description" maxlength="200">
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-cancel" id="cancel-create-btn">Cancel</button>
+                <button class="btn btn-primary" id="confirm-create-btn">Create Project</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>
+
